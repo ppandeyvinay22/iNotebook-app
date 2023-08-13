@@ -2,29 +2,29 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
-    const [credentials, setCredentials] = useState({email: "", password: ""});
+    const [credentials, setCredentials] = useState({ email: "", password: "" });
     let navigate = useNavigate();
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
 
         e.preventDefault();
         // API Call
-        const response = await fetch("http://localhost:5000/api/auth/login", {
+        const response = await fetch("inotebook-app-mern.vercel.app/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({email: credentials.email, password: credentials.password}),
+            body: JSON.stringify({ email: credentials.email, password: credentials.password }),
         });
         const json = await response.json()
         console.log(json);
-        if(json.success){
+        if (json.success) {
             //Save the authToken and redirect.
             localStorage.setItem('auth-token', json.authToken);
             props.showAlert("Logged in Sucessfully", "success")
             navigate('/');
         }
-        else{
+        else {
             props.showAlert("Invalid Details", "danger")
         }
     }

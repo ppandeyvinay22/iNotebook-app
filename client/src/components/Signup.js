@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = (props) => {
 
-  const [credentials, setCredentials] = useState({ name:"", email: "", password: "",cpassword: "" });
+  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
   let navigate = useNavigate();
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const {name, email, password} = credentials;    //Destructuring kia hai iss line me
+    const { name, email, password } = credentials;    //Destructuring kia hai iss line me
 
     // API Call
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    const response = await fetch("inotebook-app-mern.vercel.app/api/auth/createuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,12 +53,12 @@ const Signup = (props) => {
 
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" className="form-control" id="password" name='password' onChange={onChange} minLength={5} required/>
+          <input type="password" className="form-control" id="password" name='password' onChange={onChange} minLength={5} required />
         </div>
 
         <div className="mb-3">
           <label htmlFor="cpassword" className="form-label">Confirm Password</label>
-          <input type="password" className="form-control" id="cpassword" name='cpassword' onChange={onChange} minLength={5} required/>
+          <input type="password" className="form-control" id="cpassword" name='cpassword' onChange={onChange} minLength={5} required />
         </div>
 
         <button type="submit" className="btn btn-primary">Submit</button>
