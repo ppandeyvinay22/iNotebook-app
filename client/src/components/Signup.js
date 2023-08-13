@@ -12,7 +12,7 @@ const Signup = (props) => {
     const {name, email, password} = credentials;    //Destructuring kia hai iss line me
 
     // API Call
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    const response = await fetch("https://inotebook-app-mern.vercel.app/api/auth/createuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
