@@ -9,7 +9,7 @@ const Login = (props) => {
 
         e.preventDefault();
         // API Call
-        const response = await fetch("https://inotebook-app-mern.vercel.app//api/auth/login", {
+        const response = await fetch("https://inotebook-app-mern.vercel.app/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
