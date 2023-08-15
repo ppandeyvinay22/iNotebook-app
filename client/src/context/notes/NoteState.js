@@ -30,7 +30,7 @@ const NoteState = (props) => {
   }
 
   //Add a note
-  const addNote = async (title, description, tag) => {
+  const addNote = async (title, description, status) => {
     // API Call
     const response = await fetch(`${host}/api/notes/addnote`, {
       method: "POST",
@@ -39,7 +39,7 @@ const NoteState = (props) => {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem('auth-token')
       },
-      body: JSON.stringify({ title, description, tag }),
+      body: JSON.stringify({ title, description, status }),
     });
     const note = await response.json();
     setNotes(notes.concat(note))
@@ -64,7 +64,7 @@ const NoteState = (props) => {
   }
 
   //Edit a note
-  const editNote = async (id, title, description, tag) => {
+  const editNote = async (id, title, description, status) => {
     // API Call
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: "PUT",
@@ -73,7 +73,7 @@ const NoteState = (props) => {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem('auth-token')
       },
-      body: JSON.stringify({ title, description, tag }),
+      body: JSON.stringify({ title, description, status }),
     });
     const json = await response.json();
 
@@ -84,7 +84,7 @@ const NoteState = (props) => {
       if (element._id === id) {
         newNotes[index].title = title;
         newNotes[index].description = description;
-        newNotes[index].tag = tag;
+        newNotes[index].status = status;
         break;
       }
     }

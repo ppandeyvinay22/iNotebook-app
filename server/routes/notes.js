@@ -23,14 +23,14 @@ router.post('/addnote', fetchuser, [
     body('description', 'Description must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
     try {
-        const { title, description, tag } = req.body;
+        const { title, description, status } = req.body;
         //If there are errors, return Bad requests and the errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
         const note = new Note({
-            user: req.user.id, title, description, tag
+            user: req.user.id, title, description, status
         })
         const savedNote = await note.save();
         res.json(savedNote);
@@ -46,12 +46,12 @@ router.post('/addnote', fetchuser, [
 // yha kaun se note ko update kr rhe ho ye btana padega..to isliye uss particular notes ki id deni padegi
 router.put('/updatenote/:id', fetchuser, async (req, res) => {
     try {
-        const { title, description, tag } = req.body;
+        const { title, description, status } = req.body;
         // Create a newNote object
         const newNote = {};
         if (title) { newNote.title = title };  //it means ki title aa raa h part of the request from user to hum update kr denge Note ko otherwise nhi krenge
         if (description) { newNote.description = description };
-        if (tag) { newNote.tag = tag };
+        if (status) { newNote.status = status };
 
         // Find the note to be updated and update it
         let note = await Note.findById(req.params.id);

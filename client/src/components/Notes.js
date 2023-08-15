@@ -20,16 +20,16 @@ const Notes = (props) => {
 
     const ref = useRef(null);
     const refClose = useRef(null);
-    const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" })
+    const [note, setNote] = useState({ id: "", etitle: "", edescription: "", estatus: "" })
 
     const updateNote = (currentNote) => {
         ref.current.click();
-        setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag });
+        setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, estatus: currentNote.status });
     }
 
     const handleClick = (e) => {
         // Band krne se pehle, we will update it by the below line of code
-        editNote(note.id, note.etitle, note.edescription, note.etag);
+        editNote(note.id, note.etitle, note.edescription, note.estatus);
         refClose.current.click();
         props.showAlert("Deleted Successfully", "success");
     }
