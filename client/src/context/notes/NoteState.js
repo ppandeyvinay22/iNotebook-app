@@ -3,7 +3,11 @@ import { useState } from "react";
 
 const NoteState = (props) => {
 
+<<<<<<< HEAD
   const host = "inotebook-app-mern.vercel.app"
+=======
+  const host = "https://inotebook-app-mern.vercel.app"
+>>>>>>> 1ea9b2fd176ad24ef2ef5e11bf89d2590f5df7ae
 
   const notesInitial = [];
 
