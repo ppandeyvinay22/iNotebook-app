@@ -31,7 +31,7 @@ const Notes = (props) => {
         // Band krne se pehle, we will update it by the below line of code
         editNote(note.id, note.etitle, note.edescription, note.estatus);
         refClose.current.click();
-        props.showAlert("Updated Successfully", "success");
+        props.showAlert("Update Successfully", "success");
     }
 
     const onChange = (e) => {
